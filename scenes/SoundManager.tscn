@@ -1,0 +1,85 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scripts/SoundManager.cs" type="Script" id=1]
+[ext_resource path="res://resources/music/Pixel-Spy-vs-Spy_Looping.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/sfx/UI_Quirky30.wav" type="AudioStream" id=3]
+[ext_resource path="res://resources/sfx/UI_Quirky31.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/sfx/415356__owly-bee__aw-disappointed3.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/sfx/415358__owly-bee__aw-disappointed.wav" type="AudioStream" id=6]
+[ext_resource path="res://resources/sfx/415357__owly-bee__aw-disappointed2.wav" type="AudioStream" id=7]
+[ext_resource path="res://resources/sfx/415363__owly-bee__eh-surprised.wav" type="AudioStream" id=8]
+[ext_resource path="res://resources/sfx/zapsplat_foley_cash_register_ka_ching_001_44087.wav" type="AudioStream" id=9]
+[ext_resource path="res://resources/sfx/zapsplat_foley_cash_register_ka_ching_002_44083.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/sfx/415360__owly-bee__hm.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/sfx/415362__owly-bee__ehh-disinterested.wav" type="AudioStream" id=12]
+[ext_resource path="res://resources/sfx/glitchedtones_Door-Bedroom-Open-02.wav" type="AudioStream" id=13]
+[ext_resource path="res://resources/sfx/glitchedtones_Door-Bedroom-Open-01.wav" type="AudioStream" id=14]
+[ext_resource path="res://resources/sfx/sound_ex_machina_Action-Lip-Sound.wav" type="AudioStream" id=15]
+[ext_resource path="res://resources/sfx/zapsplat_vehicles_aircraft_call_bell_single_tone_44563.wav" type="AudioStream" id=16]
+[ext_resource path="res://resources/sfx/378394__13fpanska-stranska-michaela__school-bell.wav" type="AudioStream" id=17]
+[ext_resource path="res://resources/sfx/Blastwave_FX_SlotMachineInsert_SFXB.3999.wav" type="AudioStream" id=18]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="SfxUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="SfxDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Aw1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 20.0
+
+[node name="Aw2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 20.0
+
+[node name="Aw3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 20.0
+
+[node name="Eh1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = 20.0
+
+[node name="Eh2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 20.0
+
+[node name="Eh3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 5.0
+
+[node name="KaChing1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="KaChing2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Door1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="Door2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+autoplay = true
+
+[node name="SchoolBell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -10.0
+
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -10.0
+
+[node name="Coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -10.0

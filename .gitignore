@@ -1,0 +1,8 @@
+builds
+mono_crash*
+*.csproj
+*.sln
+.import
+.mono
+.vs
+.vscode

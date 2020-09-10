@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://resources/ThemeBig.tres" type="Theme" id=1]
+[ext_resource path="res://resources/imgs/itchbanner.png" type="Texture" id=2]
+[ext_resource path="res://resources/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/Credits.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/ThemeSmall.tres" type="Theme" id=5]
+[ext_resource path="res://resources/imgs/candies/candy.png" type="Texture" id=8]
+[ext_resource path="res://scripts/Title.cs" type="Script" id=9]
+[ext_resource path="res://resources/imgs/Splash.png" type="Texture" id=10]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.a > 0f) {
+		COLOR.a = 0.3f;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="Title" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 384.0
+color = Color( 0.752941, 0.568627, 0.768627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 320, -50 )
+emitting = false
+amount = 50
+lifetime = 4.0
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 320, 0 )
+angle = 92.9
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 0.5
+color = Color( 1, 1, 1, 0.784314 )
+
+[node name="itchbanner" type="Sprite" parent="."]
+position = Vector2( 320, 120 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="Button" parent="Control"]
+margin_left = 244.0
+margin_top = 243.0
+margin_right = 388.0
+margin_bottom = 279.0
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="Control"]
+margin_left = 244.0
+margin_top = 289.0
+margin_right = 388.0
+margin_bottom = 325.0
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Control"]
+margin_left = 244.0
+margin_top = 334.0
+margin_right = 388.0
+margin_bottom = 370.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Splash" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 603, 350 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Credits" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="CloseCredits" type="Button" parent="Credits"]
+margin_left = 291.662
+margin_top = 347.726
+margin_right = 346.662
+margin_bottom = 373.726
+theme = ExtResource( 3 )
+text = "Close"
+
+[node name="ResetSave" type="Button" parent="."]
+margin_left = 4.04962
+margin_top = 360.572
+margin_right = 118.05
+margin_bottom = 379.572
+theme = ExtResource( 5 )
+text = "RESET SAVED DATA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="ResetSave"]
+margin_left = 2.0
+margin_top = -17.0
+margin_right = 112.0
+margin_bottom = -4.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Are you sure?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ResetSave"]
+margin_left = 2.0
+margin_top = -17.0
+margin_right = 112.0
+margin_bottom = -4.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Completely sure?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="ResetSave"]
+margin_left = 2.0
+margin_top = -17.0
+margin_right = 112.0
+margin_bottom = -4.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "100% positive?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="ResetSave"]
+margin_left = 2.0
+margin_top = -17.0
+margin_right = 112.0
+margin_bottom = -4.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Click again to reset"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="Control/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Control/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Credits/CloseCredits" to="." method="_on_CloseCredits_pressed"]
+[connection signal="pressed" from="ResetSave" to="." method="onResetButtonPressed"]

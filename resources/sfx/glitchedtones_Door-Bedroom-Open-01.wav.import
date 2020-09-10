@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/glitchedtones_Door-Bedroom-Open-01.wav-e7a23c5a96784f19b9af83c7e3da1efc.sample"
+
+[deps]
+
+source_file="res://resources/sfx/glitchedtones_Door-Bedroom-Open-01.wav"
+dest_files=[ "res://.import/glitchedtones_Door-Bedroom-Open-01.wav-e7a23c5a96784f19b9af83c7e3da1efc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

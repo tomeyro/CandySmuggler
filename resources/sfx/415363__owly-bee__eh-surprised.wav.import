@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/415363__owly-bee__eh-surprised.wav-332e0172436d6d4eed8033364fff818a.sample"
+
+[deps]
+
+source_file="res://resources/sfx/415363__owly-bee__eh-surprised.wav"
+dest_files=[ "res://.import/415363__owly-bee__eh-surprised.wav-332e0172436d6d4eed8033364fff818a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

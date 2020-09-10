@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/378394__13fpanska-stranska-michaela__school-bell.wav-8191b22034608c20564bb519a4550c21.sample"
+
+[deps]
+
+source_file="res://resources/sfx/378394__13fpanska-stranska-michaela__school-bell.wav"
+dest_files=[ "res://.import/378394__13fpanska-stranska-michaela__school-bell.wav-8191b22034608c20564bb519a4550c21.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

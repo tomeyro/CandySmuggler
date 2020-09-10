@@ -1,0 +1,365 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/minigames/MiniGame.cs" type="Script" id=1]
+[ext_resource path="res://resources/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/CalculatorNumberButton.cs" type="Script" id=3]
+[ext_resource path="res://resources/imgs/return.png" type="Texture" id=4]
+[ext_resource path="res://resources/imgs/keycap.png" type="Texture" id=5]
+[ext_resource path="res://resources/ThemeSmall.tres" type="Theme" id=6]
+[ext_resource path="res://resources/imgs/backspace.png" type="Texture" id=7]
+[ext_resource path="res://resources/imgs/candies/candy.png" type="Texture" id=8]
+[ext_resource path="res://resources/imgs/check.png" type="Texture" id=9]
+[ext_resource path="res://resources/imgs/money.png" type="Texture" id=10]
+[ext_resource path="res://resources/ThemeBig.tres" type="Theme" id=11]
+
+
+
+
+
+
+
+
+
+
+[node name="MiniGame" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_right = 640.0
+margin_bottom = 384.0
+color = Color( 0, 0, 0, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Calculator" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Calculator"]
+margin_left = 366.0
+margin_top = 53.0
+margin_right = 469.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0.917647, 0.407843, 0.827451, 1 )
+text = "PUT A PRICE:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/Calculator"]
+margin_left = 135.0
+margin_top = 53.0
+margin_right = 277.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0.917647, 0.407843, 0.827451, 1 )
+text = "SELECT A CANDY:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screen" type="Label" parent="CanvasLayer/Calculator"]
+margin_left = 382.334
+margin_top = 85.0
+margin_right = 452.334
+margin_bottom = 105.0
+text = "0000000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Calculator/Screen"]
+position = Vector2( -10.334, 10 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Button1" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 382.0
+margin_top = 117.0
+margin_right = 402.0
+margin_bottom = 143.0
+text = "1"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 406.0
+margin_top = 117.0
+margin_right = 428.0
+margin_bottom = 143.0
+text = "2"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 430.0
+margin_top = 117.0
+margin_right = 452.0
+margin_bottom = 143.0
+text = "3"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 382.334
+margin_top = 149.0
+margin_right = 403.334
+margin_bottom = 175.0
+text = "4"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 406.0
+margin_top = 149.0
+margin_right = 426.0
+margin_bottom = 175.0
+text = "5"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 430.0
+margin_top = 149.0
+margin_right = 451.0
+margin_bottom = 175.0
+text = "6"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 382.334
+margin_top = 181.0
+margin_right = 403.334
+margin_bottom = 207.0
+text = "7"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 406.0
+margin_top = 181.0
+margin_right = 427.0
+margin_bottom = 207.0
+text = "8"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 430.0
+margin_top = 181.0
+margin_right = 451.0
+margin_bottom = 207.0
+text = "9"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button0" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 382.334
+margin_top = 213.0
+margin_right = 404.334
+margin_bottom = 239.0
+text = "0"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonErase" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 422.0
+margin_top = 213.0
+margin_right = 452.0
+margin_bottom = 239.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backspace" type="Sprite" parent="CanvasLayer/Calculator/ButtonErase"]
+position = Vector2( 15, 13 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
+[node name="AcceptButton" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 232.0
+margin_top = 261.0
+margin_right = 310.0
+margin_bottom = 287.0
+custom_colors/font_color = Color( 0.407843, 0.858824, 0.384314, 1 )
+text = "ACCEPT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 326.0
+margin_top = 261.0
+margin_right = 403.0
+margin_bottom = 287.0
+custom_colors/font_color = Color( 0.827451, 0.211765, 0.211765, 1 )
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="keycap" type="Sprite" parent="CanvasLayer/Calculator"]
+position = Vector2( 307.334, 290.35 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="return" type="Sprite" parent="CanvasLayer/Calculator/keycap"]
+position = Vector2( 0, -4 )
+texture = ExtResource( 4 )
+
+[node name="keycap2" type="Sprite" parent="CanvasLayer/Calculator"]
+position = Vector2( 400, 290 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Calculator/keycap2"]
+margin_left = -10.0
+margin_top = -19.0
+margin_right = 10.0
+margin_bottom = 11.0
+theme = ExtResource( 11 )
+text = "q"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CandyErrorLabel" type="Label" parent="CanvasLayer/Calculator"]
+margin_left = 98.0
+margin_top = 93.0
+margin_right = 312.0
+margin_bottom = 232.0
+custom_colors/font_color = Color( 0.827451, 0.211765, 0.211765, 1 )
+text = "You have no candy on you!
+Go fetch some on your backpack!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifferentCandyLabel" type="Label" parent="CanvasLayer/Calculator"]
+margin_top = 305.0
+margin_right = 320.0
+margin_bottom = 325.0
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.313726, 1 )
+text = "Are you sure about that!?"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Calculator/DifferentCandyLabel"]
+margin_top = 23.0
+margin_right = 320.0
+margin_bottom = 52.0
+theme = ExtResource( 6 )
+text = "Offering a different candy not always works out.
+At least make sure they are similar!"
+align = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighCostLabel" type="Label" parent="CanvasLayer/Calculator"]
+margin_left = 320.0
+margin_top = 305.0
+margin_right = 640.0
+margin_bottom = 325.0
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.313726, 1 )
+text = "That's a high price for that candy!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/Calculator/HighCostLabel"]
+margin_left = -1.0
+margin_top = 23.0
+margin_right = 319.0
+margin_bottom = 52.0
+theme = ExtResource( 6 )
+text = "Higher the price, higher the possibilities of your 
+offer being flat-out rejected!"
+align = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CandyButton" type="Button" parent="CanvasLayer/Calculator"]
+margin_left = 119.0
+margin_top = 93.0
+margin_right = 151.0
+margin_bottom = 125.0
+icon = ExtResource( 8 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckSprite" type="Sprite" parent="CanvasLayer/Calculator/CandyButton"]
+position = Vector2( 29, 3 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+
+[node name="CostLabel" type="Label" parent="CanvasLayer/Calculator/CandyButton"]
+margin_left = 6.0
+margin_top = 30.0
+margin_right = 36.0
+margin_bottom = 50.0
+text = "000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneySprite" type="Sprite" parent="CanvasLayer/Calculator/CandyButton"]
+position = Vector2( -2, 40 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button1" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button2" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button3" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button4" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button5" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button6" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button7" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button8" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button9" to="." method="onNumberButtonPressed"]
+[connection signal="NumberButtonPressed" from="CanvasLayer/Calculator/Button0" to="." method="onNumberButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Calculator/ButtonErase" to="." method="onEraseButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Calculator/AcceptButton" to="." method="onAcceptButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/Calculator/CancelButton" to="." method="cancelMiniGame"]

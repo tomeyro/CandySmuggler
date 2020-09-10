@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Backpack.cs" type="Script" id=1]
+[ext_resource path="res://resources/imgs/backpack.png" type="Texture" id=2]
+[ext_resource path="res://resources/imgs/backpack_open_big.png" type="Texture" id=3]
+[ext_resource path="res://resources/imgs/hands.png" type="Texture" id=4]
+[ext_resource path="res://scripts/CalculatorNumberButton.cs" type="Script" id=5]
+[ext_resource path="res://resources/Theme.tres" type="Theme" id=6]
+[ext_resource path="res://resources/imgs/candies/candy.png" type="Texture" id=7]
+[ext_resource path="res://resources/imgs/keycap.png" type="Texture" id=8]
+[ext_resource path="res://resources/ThemeBig.tres" type="Theme" id=9]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.1369
+height = 3.9718
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 0.0
+
+[node name="Backpack" type="StaticBody2D"]
+rotation = -0.00880454
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="CanvasLayer/Control"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Popup"]
+margin_top = 0.490662
+margin_right = 640.0
+margin_bottom = 384.491
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Popup"]
+margin_left = 331.875
+margin_top = 56.9357
+margin_right = 516.875
+margin_bottom = 76.9357
+text = "You can carry 4 candies"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Control/Popup"]
+position = Vector2( 187.185, 143.277 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="CanvasLayer/Control/Popup"]
+position = Vector2( 428.648, 151.221 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/Popup"]
+margin_left = 103.958
+margin_top = 243.924
+margin_right = 135.958
+margin_bottom = 275.924
+icon = ExtResource( 7 )
+expand_icon = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Popup/Button"]
+margin_left = -5.80157
+margin_top = 22.9921
+margin_right = 37.1984
+margin_bottom = 42.9921
+text = "x0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/Popup"]
+margin_left = 268.268
+margin_top = 150.41
+margin_right = 323.268
+margin_bottom = 176.41
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Control/Popup/Button2"]
+position = Vector2( 54.8522, 24.5274 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Popup/Button2/Sprite"]
+margin_left = -9.71179
+margin_top = -19.1613
+margin_right = 30.2882
+margin_bottom = 10.8387
+theme = ExtResource( 9 )
+text = "Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Control/Popup/Button2" to="." method="close"]

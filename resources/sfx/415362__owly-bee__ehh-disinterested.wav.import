@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/415362__owly-bee__ehh-disinterested.wav-e57807e56ddd6a45d0d16335d182e5a0.sample"
+
+[deps]
+
+source_file="res://resources/sfx/415362__owly-bee__ehh-disinterested.wav"
+dest_files=[ "res://.import/415362__owly-bee__ehh-disinterested.wav-e57807e56ddd6a45d0d16335d182e5a0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

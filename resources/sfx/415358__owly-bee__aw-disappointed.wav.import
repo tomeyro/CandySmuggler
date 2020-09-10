@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/415358__owly-bee__aw-disappointed.wav-a9338a444e290be7c2facd6c5d053181.sample"
+
+[deps]
+
+source_file="res://resources/sfx/415358__owly-bee__aw-disappointed.wav"
+dest_files=[ "res://.import/415358__owly-bee__aw-disappointed.wav-a9338a444e290be7c2facd6c5d053181.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

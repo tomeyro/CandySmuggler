@@ -1,0 +1,244 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/RoomDoor.cs" type="Script" id=2]
+[ext_resource path="res://resources/imgs/Room.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Backpack.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/ThemeBig.tres" type="Theme" id=6]
+[ext_resource path="res://resources/imgs/backspace.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Store.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/Theme.tres" type="Theme" id=9]
+[ext_resource path="res://scripts/Room.cs" type="Script" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 141.436, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.69164, 188.728 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 324.07, 13.9923 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 68.1416, 35.4972 )
+
+[node name="Room" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Room" type="Sprite" parent="."]
+position = Vector2( 320, 192 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 97.108, 189.761 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -7.12715, 192.434 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 648.574, 190.652 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 320.196, 392.193 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 500.685, 229.852 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 377.741, 216.488 )
+shape = SubResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 15.7145
+margin_top = 31.0952
+margin_right = 164.714
+margin_bottom = 61.0952
+custom_colors/font_color = Color( 0.333333, 0.815686, 0.945098, 1 )
+text = "Go to school!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backspace2" type="Sprite" parent="Control/Label"]
+position = Vector2( 75.1974, 43.5154 )
+rotation = -1.5708
+texture = ExtResource( 7 )
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 189.074
+margin_top = 47.628
+margin_right = 395.074
+margin_bottom = 77.628
+custom_colors/font_color = Color( 0.917647, 0.407843, 0.827451, 1 )
+text = "Buy some candy..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backspace" type="Sprite" parent="Control/Label2"]
+position = Vector2( 94.722, 42.667 )
+rotation = 4.71239
+texture = ExtResource( 7 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 172.207, 290.155 )
+scale = Vector2( 3, 3 )
+detectorAreaPath = NodePath("../../../Room/YSort/Player/Area2D")
+questionMarkPath = NodePath("../../../Room/YSort/Player/QuestionMark")
+
+[node name="Backpack" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 372.828, 254.646 )
+scale = Vector2( 3, 3 )
+questionMarkPositionY = -100
+buttonsEnabled = false
+
+[node name="RoomDoor" type="Node2D" parent="."]
+position = Vector2( 40, 135 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="RoomDoor"]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor/Area2D"]
+position = Vector2( 50.7118, -0.944946 )
+shape = SubResource( 4 )
+
+[node name="Store" parent="." instance=ExtResource( 8 )]
+position = Vector2( 288.907, 157.946 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleScreenButton" type="Button" parent="CanvasLayer/Control"]
+margin_left = 3.96851
+margin_top = 3.1748
+margin_right = 154.969
+margin_bottom = 29.1748
+text = "Go to Title Screen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntroButton" type="Button" parent="CanvasLayer/Control"]
+margin_left = 283.822
+margin_top = 3.0123
+margin_right = 379.822
+margin_bottom = 29.0123
+text = "Show Intro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="Intro" type="Popup" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Intro"]
+margin_left = 5.88627
+margin_top = 34.4767
+margin_right = 45.8863
+margin_bottom = 74.4767
+rect_scale = Vector2( 15.72, 8 )
+color = Color( 0.337255, 0.694118, 0.27451, 1 )
+
+[node name="Control" type="Control" parent="Intro"]
+margin_left = 5.88627
+margin_top = 34.4767
+margin_right = 45.8863
+margin_bottom = 74.4767
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Intro/Control"]
+margin_left = 110.792
+margin_top = 29.3665
+margin_right = 505.792
+margin_bottom = 49.3665
+text = " Oh no! Candy has been BANNED from your school!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Intro/Control"]
+margin_left = 110.792
+margin_top = 164.853
+margin_right = 505.792
+margin_bottom = 184.853
+text = "Lets see how much money you can make..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Intro/Control"]
+margin_left = 118.133
+margin_top = 58.7329
+margin_right = 513.133
+margin_bottom = 101.733
+text = "But maybe... yes! You can take advantage of that
+if you play your cards right!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Intro/Control"]
+margin_left = 107.455
+margin_top = 110.792
+margin_right = 527.455
+margin_bottom = 153.792
+text = "You have some money left from your birthday,
+buy some candy to resell it at your school for a profit!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseIntro" type="Button" parent="Intro/Control"]
+margin_left = 288.325
+margin_top = 286.323
+margin_right = 343.325
+margin_bottom = 312.323
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Control/TitleScreenButton" to="." method="_on_TitleScreenButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/IntroButton" to="." method="_on_IntroButton_pressed"]
+[connection signal="pressed" from="Intro/Control/CloseIntro" to="." method="_on_CloseIntro_pressed"]

@@ -1,0 +1,337 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/Player.cs" type="Script" id=1]
+[ext_resource path="res://resources/imgs/question.png" type="Texture" id=2]
+[ext_resource path="res://resources/imgs/body.png" type="Texture" id=3]
+[ext_resource path="res://resources/imgs/money.png" type="Texture" id=4]
+[ext_resource path="res://resources/Theme.tres" type="Theme" id=5]
+[ext_resource path="res://resources/imgs/keycap.png" type="Texture" id=6]
+[ext_resource path="res://resources/ThemeSmall.tres" type="Theme" id=7]
+[ext_resource path="res://resources/imgs/face.png" type="Texture" id=8]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.r > 0.5f && COLOR.g < 0.5f && COLOR.b < 0.5f) {
+		COLOR.r = 0.3f;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.5993
+height = 7.55374
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Sprites:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.98, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walking"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprites:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -3.0, 3.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "turn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprites:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "updateSideSprite"
+} ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+height = 19.4516
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+detectorAreaPath = NodePath("Area2D")
+questionMarkPath = NodePath("QuestionMark")
+
+[node name="MoneyParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -50 )
+emitting = false
+amount = 12
+one_shot = true
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2( 0, -10 )
+linear_accel = 30.0
+linear_accel_random = 0.5
+radial_accel = 10.0
+radial_accel_random = 0.5
+scale_amount = 0.05
+scale_amount_random = 0.05
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2( 0, -20 )
+
+[node name="SpriteFront" type="Sprite" parent="Sprites"]
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 3 )
+
+[node name="Face" type="Sprite" parent="Sprites/SpriteFront"]
+position = Vector2( 0, -52.9134 )
+texture = ExtResource( 8 )
+
+[node name="SpriteBack" type="Sprite" parent="Sprites"]
+visible = false
+material = SubResource( 2 )
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="Movement" type="AnimationPlayer" parent="Animations"]
+anims/idle = SubResource( 4 )
+anims/walking = SubResource( 5 )
+
+[node name="Turning" type="AnimationPlayer" parent="Animations"]
+anims/turn = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, -7 )
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+
+[node name="QuestionMark" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -65 )
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 2 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 15.9839, 0.813209 )
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Control"]
+margin_left = 0.176777
+margin_top = 360.393
+margin_right = 40.1768
+margin_bottom = 400.393
+rect_scale = Vector2( 15.9972, 0.601544 )
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLabel" type="Label" parent="UI/Control"]
+margin_left = 520.806
+margin_top = 4.86252
+margin_right = 620.806
+margin_bottom = 24.8625
+text = "0000000000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="money" type="Sprite" parent="UI/Control"]
+position = Vector2( 506.572, 15.3507 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
+
+[node name="Control" type="Control" parent="UI/Control"]
+margin_top = 286.378
+margin_right = 40.0
+margin_bottom = 326.378
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="Label" parent="UI/Control/Control"]
+margin_left = 5.38847
+margin_top = 79.4315
+margin_right = 56.3885
+margin_bottom = 124.432
+text = "WALK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="keycap2" type="Sprite" parent="UI/Control/Control/Actions"]
+position = Vector2( 45.3944, 6.43765 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="keycap3" type="Sprite" parent="UI/Control/Control/Actions"]
+position = Vector2( 66.3944, 6.43765 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="keycap4" type="Sprite" parent="UI/Control/Control/Actions"]
+position = Vector2( 87.3944, 6.43765 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="keycap5" type="Sprite" parent="UI/Control/Control/Actions"]
+position = Vector2( 108.924, 6.17276 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Key" type="Label" parent="UI/Control/Control/Actions"]
+margin_left = 39.9736
+margin_top = -1.13525
+margin_right = 49.9736
+margin_bottom = 11.8647
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key2" type="Label" parent="UI/Control/Control/Actions"]
+margin_left = 62.9803
+margin_top = -1.13525
+margin_right = 72.9803
+margin_bottom = 11.8647
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key3" type="Label" parent="UI/Control/Control/Actions"]
+margin_left = 84.3992
+margin_top = -1.44855
+margin_right = 94.3992
+margin_bottom = 11.5515
+text = "S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key4" type="Label" parent="UI/Control/Control/Actions"]
+margin_left = 105.677
+margin_top = -1.48935
+margin_right = 115.677
+margin_bottom = 11.5107
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions2" type="Label" parent="UI/Control/Control"]
+margin_left = 139.839
+margin_top = 63.8634
+margin_right = 190.839
+margin_bottom = 108.863
+text = "
+INTERACT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="keycap" type="Sprite" parent="UI/Control/Control/Actions2"]
+position = Vector2( 64.9691, 22.1194 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Key5" type="Label" parent="UI/Control/Control/Actions2"]
+margin_left = 61.9441
+margin_top = 14.7444
+margin_right = 71.9441
+margin_bottom = 27.7444
+text = "E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions3" type="Label" parent="UI/Control/Control"]
+margin_left = 232.328
+margin_top = 80.1008
+margin_right = 283.328
+margin_bottom = 125.101
+text = "PAUSE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="keycap6" type="Sprite" parent="UI/Control/Control/Actions3"]
+position = Vector2( 57.0994, 6.26807 )
+scale = Vector2( 0.8, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Key6" type="Label" parent="UI/Control/Control/Actions3"]
+margin_left = 47.9475
+margin_top = -1.46921
+margin_right = 66.9475
+margin_bottom = 11.5308
+text = "ESC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
